@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.main.models import Main, Contact, Awarts, About
+from apps.main.models import Main, Contact, Awarts, About, Form
 
 # Create your views here.
 def index(requset):
@@ -13,4 +13,5 @@ def about(requset):
 
 def contact(request):
     contact = Contact.objects.all()
+    
     return render(request, 'contact.html', locals())

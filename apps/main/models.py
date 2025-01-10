@@ -89,3 +89,55 @@ class About(models.Model):
     class Meta:
         verbose_name = 'Настройка (about)'
         verbose_name_plural = 'Настройки (about)'
+
+
+class Form(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Имя отпровителя"
+    )
+    email = models.EmailField(
+        verbose_name="email отпровителя"
+    )
+    message = models.TextField(
+        verbose_name="Сщщбщение"
+    )
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Оставленный отзыв'
+        verbose_name_plural = 'Оставленные отзывы'
+
+
+class TelegramUser(models.Model):
+    id_user = models.CharField(
+        max_length=100,
+        verbose_name="ID пользовотеля"
+    )
+    user_name = models.CharField(
+        max_length=100,
+        verbose_name="Имя пользователя",
+        null=True, blank=True
+    )
+    first_name = models.CharField(
+        max_length=100,
+        verbose_name="Имя",
+        null=True, blank=True
+    )
+    chat_id = models.CharField(
+        max_length=100,
+        verbose_name="Чат ID"
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата регистрации"
+    )
+
+    def __str__(self):
+        return str(self.user_name)
+    
+    class Meta:
+        verbose_name = 'Пользователь телегрм'
+        verbose_name_plural = 'Пользователи телегрма'
